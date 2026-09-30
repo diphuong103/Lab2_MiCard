@@ -1,28 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
+const CONTACTS = [
+  { icon: '☎', label: '+84 900 123 456' },
+  { icon: '✉', label: 'hello@alexmorgan.dev' },
+  { icon: '⌖', label: 'Ho Chi Minh City, Vietnam' },
+];
+
 export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
-      <View style={styles.profile}>
+
+      <View style={styles.card}>
         <View style={styles.avatar}>
-          <Text style={styles.avatarText}>DP</Text>
+          <Text style={styles.avatarText}>AM</Text>
         </View>
-        <Text style={styles.name}>Dinh Phuong</Text>
-        <Text style={styles.role}>REACT NATIVE DEVELOPER</Text>
+
+        <Text style={styles.name}>Alex Morgan</Text>
+        <Text style={styles.role}>MOBILE APP DEVELOPER</Text>
+        <View style={styles.divider} />
+
+        {CONTACTS.map((contact) => (
+          <View key={contact.label} style={styles.contactRow}>
+            <Text style={styles.contactIcon}>{contact.icon}</Text>
+            <Text style={styles.contactText}>{contact.label}</Text>
+          </View>
+        ))}
       </View>
 
-      <View style={styles.divider} />
-
-      <View style={styles.contactCard}>
-        <Text style={styles.contactIcon}>☎</Text>
-        <Text style={styles.contactText}>+84 901 234 567</Text>
-      </View>
-      <View style={styles.contactCard}>
-        <Text style={styles.contactIcon}>✉</Text>
-        <Text style={styles.contactText}>dinhphuong@example.com</Text>
-      </View>
+      <Text style={styles.footer}>MI CARD</Text>
     </View>
   );
 }
@@ -30,67 +37,79 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#123b3a',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#0c1726',
     paddingHorizontal: 24,
   },
-  profile: {
+  card: {
+    width: '100%',
+    maxWidth: 380,
     alignItems: 'center',
+    paddingHorizontal: 24,
+    paddingVertical: 36,
+    borderRadius: 24,
+    backgroundColor: '#16263a',
+    borderColor: '#263c56',
+    borderWidth: 1,
   },
   avatar: {
-    width: 128,
-    height: 128,
-    borderRadius: 64,
+    width: 112,
+    height: 112,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#d6b36a',
+    borderRadius: 56,
+    backgroundColor: '#e6a94f',
+    borderColor: '#f8d18c',
     borderWidth: 4,
-    borderColor: '#f4e2b5',
   },
   avatarText: {
-    color: '#123b3a',
-    fontSize: 42,
-    fontWeight: '700',
+    color: '#16263a',
+    fontSize: 36,
+    fontWeight: '800',
+    letterSpacing: 2,
   },
   name: {
-    color: '#f4e2b5',
+    color: '#ffffff',
     fontSize: 34,
     fontWeight: '700',
-    marginTop: 18,
+    marginTop: 22,
   },
   role: {
-    color: '#d6b36a',
-    fontSize: 14,
+    color: '#e6a94f',
+    fontSize: 13,
     fontWeight: '700',
     letterSpacing: 2,
     marginTop: 8,
   },
   divider: {
-    width: '82%',
-    height: 1,
-    backgroundColor: '#d6b36a',
-    marginVertical: 28,
+    width: 56,
+    height: 2,
+    backgroundColor: '#e6a94f',
+    marginVertical: 26,
   },
-  contactCard: {
+  contactRow: {
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#f4e2b5',
-    borderRadius: 8,
-    paddingHorizontal: 18,
-    paddingVertical: 16,
-    marginVertical: 6,
+    marginVertical: 10,
   },
   contactIcon: {
-    width: 32,
-    color: '#123b3a',
-    fontSize: 22,
+    width: 42,
+    color: '#e6a94f',
+    fontSize: 21,
     textAlign: 'center',
   },
   contactText: {
-    color: '#123b3a',
-    fontSize: 17,
-    marginLeft: 12,
+    color: '#e7edf5',
+    fontSize: 16,
+    marginLeft: 10,
+  },
+  footer: {
+    color: '#718096',
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 4,
+    marginTop: 28,
   },
 });
